@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/bootloader/subproject",
+    "build_dir":          "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/bootloader",
+    "config_file":        "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "v4.3.2",
+    "target":             "esp32",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "xtensa-esp32-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/efuse/Kconfig;/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp32/Kconfig;/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_common/Kconfig;/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_system/Kconfig;/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/log/Kconfig;/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/newlib/Kconfig;/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/bootloader/Kconfig.projbuild;/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esptool_py/Kconfig.projbuild;/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32", "esp_common", "esp_hw_support", "esp_rom", "esp_system", "esptool_py", "hal", "log", "main", "micro-ecc", "newlib", "partition_table", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/bootloader", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/bootloader_support", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/efuse", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp32", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_common", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_hw_support", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_rom", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_system", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esptool_py", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/hal", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/log", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/bootloader/subproject/main", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/bootloader/subproject/components/micro-ecc", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/newlib", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/partition_table", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/soc", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/spi_flash", "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/xtensa", "" ]
+}
