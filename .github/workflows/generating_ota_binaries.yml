@@ -27,10 +27,10 @@ jobs:
      - name: Include esp-idf binaries
        uses: docker://espressif/idf:v4.3.2
      - run: |
-         cd ../esp32_firmware
+         cd esp32_firmware
          idf.py build
 #        with:
-#           working_directory: ../esp32_firmware
+#           working_directory: esp32_firmware
 #           args: idf.py build
         
       # Upload the binaries
