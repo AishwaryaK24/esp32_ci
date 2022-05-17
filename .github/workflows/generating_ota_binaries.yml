@@ -25,6 +25,7 @@ jobs:
          submodules: true
      - name: Change to project
        run: |
+         echo $PWD
          cd /home/runner/work/esp32_ci/esp32_ci/esp32_firmware
          
       # Runs a single command using the runners shell
