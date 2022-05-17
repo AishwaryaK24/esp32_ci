@@ -27,8 +27,7 @@ jobs:
      - name: Include esp-idf binaries
        uses: docker://espressif/idf:v4.3.2
        with:
-          path: ../esp32_firmware
-          args: idf.py build
+          args: idf.py -C ../esp32_firmware build
         
       # Upload the binaries
      - name: Upload artifacts
