@@ -29,6 +29,7 @@ void app_main(void)
     /* Set the GPIO as a push/pull output */
     gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
     while(1) {
+        printf("This the new commit\n");
         /* Blink off (output low) */
         printf("Turning off the LED\n");
         gpio_set_level(BLINK_GPIO, 0);

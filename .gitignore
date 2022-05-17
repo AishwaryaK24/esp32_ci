@@ -50,3 +50,17 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+.DS_Store
+Thumbs.db
+.metadata
+*.mode1v3
+*.pbxuser
+*.xcuserdatad
+*.xcworkspace
+.vscode/
+esp32_firmware/build/
+.idea/
+esp32_firmware/cmake-build-debug-cygwin/
+/Default/
+.jxbrowser.userdata
+.python-version

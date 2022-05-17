@@ -5,7 +5,7 @@ source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/co
 source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/driver/Kconfig"
 source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/efuse/Kconfig"
 source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp-tls/Kconfig"
-source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp32/Kconfig"
+source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp32c3/Kconfig"
 source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_adc_cal/Kconfig"
 source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_common/Kconfig"
 source "/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp-idf/components/esp_eth/Kconfig"

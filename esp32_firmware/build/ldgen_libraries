@@ -25,10 +25,9 @@
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/esp_hw_support/libesp_hw_support.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/esp_ringbuf/libesp_ringbuf.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/driver/libdriver.a
-/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/xtensa/libxtensa.a
+/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/riscv/libriscv.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/espcoredump/libespcoredump.a
-/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/perfmon/libperfmon.a
-/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/esp32/libesp32.a
+/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/esp32c3/libesp32c3.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/esp_common/libesp_common.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/esp_timer/libesp_timer.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/freertos/libfreertos.a
@@ -66,6 +65,5 @@
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/mqtt/libmqtt.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/openssl/libopenssl.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/spiffs/libspiffs.a
-/Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/ulp/libulp.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 /Users/aishwaryakulkarni/Desktop/esp32_ci/esp32_ci/esp32_firmware/build/esp-idf/main/libmain.a
