@@ -23,17 +23,15 @@ jobs:
        uses: actions/checkout@v3
        with:
          submodules: true
-
+     - name: Change to project
+       run: |
+         cd /home/runner/work/esp32_ci/esp32_ci/esp32_firmware
+         
       # Runs a single command using the runners shell
      - name: Include esp-idf binaries
        uses: docker://espressif/idf:v4.3.2 
-#        with:
-#           path: $GITHUB_WORKSPACE/esp32_firmware
-#           args: idf.py build
-     - name: Build project
-       run: |
-         cd /home/runner/work/esp32_ci/esp32_ci/esp32_firmware
-         idf.py build
+       with:         
+          args: idf.py build    
         
       # Upload the binaries
      - name: Upload artifacts
