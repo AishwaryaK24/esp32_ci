@@ -30,7 +30,7 @@ jobs:
 #          cd esp32_firmware
 #          idf.py build
        with:
-          args: idf.py -C /git/workspace/esp32_firmware build
+          args: idf.py -C /home/runner/work/esp32_ci/esp32_ci/esp32_firmware build
         
       # Upload the binaries
      - name: Upload artifacts
