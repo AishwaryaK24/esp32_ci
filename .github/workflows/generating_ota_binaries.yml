@@ -28,7 +28,7 @@ jobs:
      - name: Include esp-idf binaries
        uses: docker://espressif/idf:v4.3.2
        with:
-          args: /github/workspace/esp32_firmware:/project -w /project espressif/idf idf.py build
+          args: -v /github/workspace/esp32_firmware:/project -w /project espressif/idf idf.py build
         
       # Upload the binaries
      - name: Upload artifacts
