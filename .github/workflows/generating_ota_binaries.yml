@@ -26,7 +26,7 @@ jobs:
 
       # Runs a single command using the runners shell
      - name: Include esp-idf binaries
-       uses: docker://espressif/idf:release-v4.3.2 
+       uses: docker://espressif/idf:v4.3.2 
        with:
           path: $GITHUB_WORKSPACE/esp32_firmware
           args: idf.py build
