@@ -32,7 +32,7 @@ jobs:
 #           args: idf.py build
      - name: Build project
        run: |
-         cd ../esp32_firmware
+         cd /home/runner/work/esp32_ci/esp32_ci/esp32_firmware
          idf.py build
         
       # Upload the binaries
