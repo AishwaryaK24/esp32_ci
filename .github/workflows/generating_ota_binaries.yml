@@ -66,11 +66,8 @@ jobs:
        uses: actions/upload-artifact@v3.0.0
        with:
           name: ota_binaries
-          path: |
-            #esp32_firmware/build/bootloader/bootloader.bin
+          path: 
             esp32_firmware/build/partition_table/partition_table.bin
-            #esp32_firmware/build/blink.bin
-            #esp32_firmware/build/blink.elf
           if-no-files-found: error
           retention-days: 1
        
