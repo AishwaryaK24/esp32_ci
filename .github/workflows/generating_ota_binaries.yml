@@ -67,7 +67,10 @@ jobs:
        with:
           name: ota_binaries
           path: 
-            esp32_firmware/build/partition_table/partition_table.bin
+            partition_table/partition_table.bin
+            esp32_firmware/build/bootloader/bootloader.bin
+            esp32_firmware/build/blink.bin
+            esp32_firmware/build/blink.elf
           if-no-files-found: error
           retention-days: 1
        
