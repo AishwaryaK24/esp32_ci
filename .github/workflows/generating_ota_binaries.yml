@@ -67,10 +67,10 @@ jobs:
        with:
           name: ota_binaries
           path: |
-            /github/workspace/esp32_firmware/build/bootloader/bootloader.bin
-            /github/workspace/esp32_firmware/build/partition_table/partition_table.bin
-            /github/workspace/esp32_firmware/build/blink.bin
-            /github/workspace/esp32_firmware/build/blink.elf
+            build/bootloader/bootloader.bin
+            build/partition_table/partition_table.bin
+            build/blink.bin
+            build/blink.elf
           if-no-files-found: error
           retention-days: 1
        
