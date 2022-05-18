@@ -66,7 +66,7 @@ jobs:
        uses: actions/upload-artifact@v3.0.0
        with:
           name: ota_binaries
-          path: 
+          path: |
             partition_table/partition_table.bin
             esp32_firmware/build/bootloader/bootloader.bin
             esp32_firmware/build/blink.bin
