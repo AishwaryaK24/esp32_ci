@@ -82,7 +82,7 @@ jobs:
        uses: actions/upload-artifact@v3.0.0
        with:
           name: ota_binaries
-          path: 
+          path: |
             esp32_firmware/build/blink.bin
             esp32_firmware/build/blink.elf
           if-no-files-found: error
