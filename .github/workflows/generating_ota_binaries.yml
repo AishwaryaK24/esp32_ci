@@ -60,31 +60,58 @@ jobs:
     #    uses: docker
     #    with:         
     #       args: idf.py build    
-    
+    #Add the files to the folder
+     - name: Copy the files in temporary folder
+       run: |
+        mkdir ota_binaries
+        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries
+        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries        
+        cp esp32_firmware/build/blink.bin ota_binaries
+        cp esp32_firmware/build/blink.elf ota_binaries
+     - name: Edit the file names
+       run: |
+        cd ota_binaries
+        mv partition-table.bin obnizos__blewifi__gw2__4.0.0-beta.2__partition.bin
+        mv bootloader.bin obnizos__blewifi__gw2__4.0.0-beta.2__bootloader.bin
+        mv blink.bin obnizos__blewifi__gw2__4.0.0-beta.2.bin
+        mv blink.elf obnizos__blewifi__gw2__4.0.0-beta.2.elf
       # Upload the binaries
      - name: Upload artifacts
        uses: actions/upload-artifact@v3.0.0
        with:
-          name: ota_binaries
+          name: ota_binaries_version_number
           path:            
-            esp32_firmware/build/bootloader/bootloader.bin
+            ota_binaries
           if-no-files-found: error
           retention-days: 1
-     - name: Upload artifacts
-       uses: actions/upload-artifact@v3.0.0
-       with:
-          name: ota_binaries
-          path:
-            esp32_firmware/build/partition_table/partition-table.bin
-          if-no-files-found: error
-          retention-days: 1
-     - name: Upload artifacts
-       uses: actions/upload-artifact@v3.0.0
-       with:
-          name: ota_binaries
-          path: |
-            esp32_firmware/build/blink.bin
-            esp32_firmware/build/blink.elf
-          if-no-files-found: error
-          retention-days: 1
+          # Delete dummy directory
+     - name: Delete the dummy directory
+       run:
+        rm -r ota_binaries
+      # Upload the binaries
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v3.0.0
+#        with:
+#           name: ota_binaries
+#           path:            
+#             esp32_firmware/build/bootloader/bootloader.bin
+#           if-no-files-found: error
+#           retention-days: 1
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v3.0.0
+#        with:
+#           name: ota_binaries
+#           path:
+#             esp32_firmware/build/partition_table/partition-table.bin
+#           if-no-files-found: error
+#           retention-days: 1
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v3.0.0
+#        with:
+#           name: ota_binaries
+#           path: |
+#             esp32_firmware/build/blink.bin
+#             esp32_firmware/build/blink.elf
+#           if-no-files-found: error
+#           retention-days: 1
        
