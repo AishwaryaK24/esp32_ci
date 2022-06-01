@@ -43,7 +43,7 @@ jobs:
         version="$( cut -d '"' -f 2 <<< "$value" )"
         echo "$version"          
        env:
-         version: ${version}  
+         version: $version  
  
     #Add the files to the folder
      - name: Copy the files in temporary folder       
