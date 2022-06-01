@@ -31,8 +31,8 @@ jobs:
         echo "$version"     
      version: "$version"
  
-#     # Steps represent a sequence of tasks that will be executed as part of the job
-#     steps:
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
 #       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 #      - name: Checkout
 #        uses: actions/checkout@v2
@@ -47,15 +47,15 @@ jobs:
 #         path: ./esp32_firmware    
      
  
-#     #Add the files to the folder
-#      - name: Copy the files in temporary folder       
-#        run: |
-#         echo "${{ env.version }}"
-#         mkdir ota_binaries_${{ env.version }}       
-#         cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${{ env.version }}
-#         cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${{ env.version }}        
-#         cp esp32_firmware/build/blink.bin ota_binaries_${{ env.version }}
-#         cp esp32_firmware/build/blink.elf ota_binaries_${{ env.version }}
+    #Add the files to the folder
+     - name: Copy the files in temporary folder       
+       run: |
+        echo "${{ env.version }}"
+        mkdir ota_binaries_${{ env.version }}       
+   #     cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${{ env.version }}
+   #     cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${{ env.version }}        
+    #    cp esp32_firmware/build/blink.bin ota_binaries_${{ env.version }}
+     #   cp esp32_firmware/build/blink.elf ota_binaries_${{ env.version }}
         
 #      - name: Edit the file names
 #        run: |        
