@@ -31,7 +31,7 @@ jobs:
      - name: Copy the files in temporary folder
        run: |        
         echo $PWD
-        value=`cat esp32_firmware/main/version.h`
+        value=`cat ./esp32_firmware/main/version.h`
         echo "$value"
         
 #      - name: esp-idf build
