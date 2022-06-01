@@ -41,47 +41,47 @@ jobs:
         echo "envi_version=${version}" >> $GITHUB_ENV
 
         
-#      - name: esp-idf build
-#        uses: espressif/esp-idf-ci-action@v1
-#        with:
-#         esp_idf_version: v4.3.2
-#         target: esp32c3
-#         path: ./esp32_firmware    
+    - name: esp-idf build
+      uses: espressif/esp-idf-ci-action@v1
+      with:
+       esp_idf_version: v4.3.2
+       target: esp32c3
+       path: ./esp32_firmware    
      
  
     #Add the files to the folder
     - name: Copy the files in temporary folder       
       run: |
         echo "$envi_version"
-     # mkdir ota_binaries_${{ env.version }}       
-   #     cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${{ env.version }}
-   #     cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${{ env.version }}        
-    #    cp esp32_firmware/build/blink.bin ota_binaries_${{ env.version }}
-     #   cp esp32_firmware/build/blink.elf ota_binaries_${{ env.version }}
+        mkdir ota_binaries_$envi_version       
+        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_$envi_version
+        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_$envi_version       
+        cp esp32_firmware/build/blink.bin ota_binaries_$envi_version
+        cp esp32_firmware/build/blink.elf ota_binaries_$envi_version
         
-#      - name: Edit the file names
-#        run: |        
-#         cd ota_binaries_${{ env.version }}                
-#         mv bootloader.bin obnizos__blewifi__gw2__${{ env.version }}__bootloader.bin
-#         mv partition-table.bin obnizos__blewifi_gw2__${{ env.version }}__partition.bin
-#         mv blink.bin obnizos__blewifi__gw2__${{ env.version }}.bin
-#         mv blink.elf obnizos__blewifi__gw2__${{ env.version }}.elf
+    - name: Edit the file names
+      run: |        
+        cd ota_binaries_$envi_version                
+        mv bootloader.bin obnizos__blewifi__gw2__$envi_version__bootloader.bin
+        mv partition-table.bin obnizos__blewifi_gw2__$envi_version__partition.bin
+        mv blink.bin obnizos__blewifi__gw2__$envi_version.bin
+        mv blink.elf obnizos__blewifi__gw2__$envi_version.elf
        
 #      - name: Check current path
 #        run: |
 #         echo "$PWD"
     
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v3.0.0
-#        with:
-#           name: ota_binaries_${{ env.version }}
-#           path:            
-#             ota_binaries_${{ env.version }}
-#           if-no-files-found: error
-#           retention-days: 1
-#           # Delete dummy directory
-#      - name: Delete the dummy directory
-#        run:
-#         rm -r ota_binaries_${{ env.version }}
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3.0.0
+      with:
+          name: ota_binaries_$envi_version
+          path:            
+            ota_binaries_$envi_version
+          if-no-files-found: error
+          retention-days: 1
+          # Delete dummy directory
+    - name: Delete the dummy directory
+      run:
+        rm -r ota_binaries_$envi_version
      
        
