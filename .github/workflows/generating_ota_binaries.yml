@@ -59,7 +59,8 @@ jobs:
         mv partition-table.bin obnizos__blewifi_gw2__${version}__partition.bin
         mv blink.bin obnizos__blewifi__gw2__${version}.bin
         mv blink.elf obnizos__blewifi__gw2__${version}.elf
-        
+       env:
+         version: ${version}
      - name: Check current path
        run: |
         echo "$PWD"
@@ -68,9 +69,9 @@ jobs:
      - name: Upload artifacts
        uses: actions/upload-artifact@v3.0.0
        with:
-          name: ota_binaries_${version}
+          name: ota_binaries_${{env.version}}
           path:            
-            ota_binaries_${version}
+            ota_binaries_${{env.version}}
           if-no-files-found: error
           retention-days: 1
           # Delete dummy directory
