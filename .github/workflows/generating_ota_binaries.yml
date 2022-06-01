@@ -25,6 +25,12 @@ jobs:
  
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+         submodules: true        
     - name: Setting OS version
       run: |
         echo $PWD
@@ -34,11 +40,6 @@ jobs:
         echo "$version"            
         echo "version=${version}" >> $GITHUB_ENV
 
-#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#        with:
-#          submodules: true         
         
 #      - name: esp-idf build
 #        uses: espressif/esp-idf-ci-action@v1
