@@ -26,14 +26,21 @@ jobs:
      - name: Checkout
        uses: actions/checkout@v2
        with:
-         submodules: recursive
-     - name: Espressif IoT Development Framework (ESP-IDF)
-  # You may pin to the exact commit or the version.
-  # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
-       uses: espressif/esp-idf-ci-action@rust-latest
+         submodules: true
+     - name: Build binary assets
+       uses: docker://espressif/idf:v4.3.2
        with:
-    # Relative path under $GITHUB_WORKSPACE to place the repository
-        path: ./esp32_firmware
+         path: ./esp32_firmware
+         args: idf.py build    
+        
+         
+#      - name: Espressif IoT Development Framework (ESP-IDF)
+#   # You may pin to the exact commit or the version.
+#   # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
+#        uses: espressif/esp-idf-ci-action@rust-latest
+#        with:
+#     # Relative path under $GITHUB_WORKSPACE to place the repository
+#         path: ./esp32_firmware
     #  - name: Change to project
     #    run: |
     #      echo $PWD
