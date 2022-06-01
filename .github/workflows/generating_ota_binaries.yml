@@ -10,7 +10,9 @@ on:
   pull_request:
     branches: 
     - feature/git_action_test
-    - !main
+  push:
+    branches:
+      feature/git_action_test
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
