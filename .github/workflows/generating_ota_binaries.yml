@@ -28,11 +28,9 @@ jobs:
        with:
          submodules: true
      - name: Build binary assets
-       uses: docker://espressif/idf:v4.3.2
-     - name: Build the project
-       run: |
-        cd ./esp32_firmware
-        idf.py build     
+       uses: docker://espressif/idf:v4.3.2     
+       with:
+         path: ./esp32_firmware      
         
          
 #      - name: Espressif IoT Development Framework (ESP-IDF)
