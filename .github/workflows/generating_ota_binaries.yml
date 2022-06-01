@@ -38,7 +38,7 @@ jobs:
     #Add the files to the folder
      - name: Copy the files in temporary folder
        run: |
-        mkdir ota_binaries       
+        mkdir ota_binaries_${version}       
         cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries
         cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries        
         cp esp32_firmware/build/blink.bin ota_binaries
