@@ -59,6 +59,11 @@ jobs:
         mv partition-table.bin obnizos__blewifi_gw2__${version}__partition.bin
         mv blink.bin obnizos__blewifi__gw2__${version}.bin
         mv blink.elf obnizos__blewifi__gw2__${version}.elf
+        
+     - name: Check current path
+       run: |
+        echo "$PWD"
+        
       # Upload the binaries
      - name: Upload artifacts
        uses: actions/upload-artifact@v3.0.0
