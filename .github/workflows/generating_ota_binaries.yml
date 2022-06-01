@@ -63,15 +63,15 @@ jobs:
      - name: Upload artifacts
        uses: actions/upload-artifact@v3.0.0
        with:
-          name: ota_binaries_version_number
+          name: ota_binaries_${version}
           path:            
-            ota_binaries
+            ota_binaries_${version}
           if-no-files-found: error
           retention-days: 1
           # Delete dummy directory
      - name: Delete the dummy directory
        run:
-        rm -r ota_binaries
+        rm -r ota_binaries_${version}
       # Upload the binaries
 #      - name: Upload artifacts
 #        uses: actions/upload-artifact@v3.0.0
