@@ -33,7 +33,7 @@ jobs:
         echo $PWD
         value=`cat $PWD/esp32_firmware/main/version.h`
         echo "$value"
-        version = "$( cut -d '"' -f 2 <<< "$value" )"
+        version="$( cut -d '"' -f 2 <<< "$value" )"
         echo "$version"
         
 #      - name: esp-idf build
