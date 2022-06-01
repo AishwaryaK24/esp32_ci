@@ -34,6 +34,15 @@ jobs:
         esp_idf_version: v4.3.2
         target: esp32c3
         path: ./esp32_firmware
+     
+     - name: Version number for the firmware
+       run: |
+        echo $PWD
+        value=`cat $PWD/esp32_firmware/main/version.h`
+        echo "$value"
+        version="$( cut -d '"' -f 2 <<< "$value" )"
+        echo "$version"
+         
  
     #Add the files to the folder
      - name: Copy the files in temporary folder
@@ -44,12 +53,7 @@ jobs:
         cp esp32_firmware/build/blink.bin ota_binaries
         cp esp32_firmware/build/blink.elf ota_binaries
      - name: Edit the file names
-       run: |
-        echo $PWD
-        value=`cat $PWD/esp32_firmware/main/version.h`
-        echo "$value"
-        version="$( cut -d '"' -f 2 <<< "$value" )"
-        echo "$version"
+       run: |        
         cd ota_binaries_${version}        
         mv partition-table.bin obnizos__blewifi_gw2__${version}__partition.bin
         mv bootloader.bin obnizos__blewifi__gw2__${version}__bootloader.bin
