@@ -38,7 +38,7 @@ jobs:
         echo "$value"
         version="$( cut -d '"' -f 2 <<< "$value" )"
         echo "$version"            
-        echo "version=${version}" >> $GITHUB_ENV
+        echo "envi_version=${version}" >> $GITHUB_ENV
 
         
 #      - name: esp-idf build
@@ -52,7 +52,7 @@ jobs:
     #Add the files to the folder
     - name: Copy the files in temporary folder       
       run: |
-        echo "$version"
+        echo "$envi_version"
      # mkdir ota_binaries_${{ env.version }}       
    #     cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${{ env.version }}
    #     cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${{ env.version }}        
