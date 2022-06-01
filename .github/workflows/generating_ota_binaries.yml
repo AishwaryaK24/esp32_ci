@@ -28,12 +28,12 @@ jobs:
        with:
          submodules: true         
         
-#      - name: esp-idf build
-#        uses: espressif/esp-idf-ci-action@v1
-#        with:
-#         esp_idf_version: v4.3.2
-#         target: esp32c3
-#         path: ./esp32_firmware
+     - name: esp-idf build
+       uses: espressif/esp-idf-ci-action@v1
+       with:
+        esp_idf_version: v4.3.2
+        target: esp32c3
+        path: ./esp32_firmware
  
     #Add the files to the folder
      - name: Copy the files in temporary folder
