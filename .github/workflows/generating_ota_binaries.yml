@@ -41,12 +41,12 @@ jobs:
         value=`cat $PWD/esp32_firmware/main/version.h`
         echo "$value"
         version="$( cut -d '"' -f 2 <<< "$value" )"
-        echo "$version"               
- 
-    #Add the files to the folder
-     - name: Copy the files in temporary folder
+        echo "$version"          
        env:
          version: ${version}  
+ 
+    #Add the files to the folder
+     - name: Copy the files in temporary folder       
        run: |
         echo "${{env.version}}"
         mkdir ota_binaries_${{env.version}}       
