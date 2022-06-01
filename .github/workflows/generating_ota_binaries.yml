@@ -26,26 +26,22 @@ jobs:
      - name: Checkout
        uses: actions/checkout@v2
        with:
-         submodules: true
-#      - name: Change to project
-#        run: |
-#          echo $PWD
-#          cd ./esp32_firmware
+         submodules: true       
          
-#      - name: Build binary assets
-#        uses: docker://espressif/idf:v4.3.2     
+#      - name: Espressif IoT Development Framework (ESP-IDF)
+# #   # You may pin to the exact commit or the version.
+# #   # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
+#        uses: espressif/esp-idf-ci-action@rust-latest
 #        with:
-#         args: ./esp32_firmware idf.py build
-        
-         
-     - name: Espressif IoT Development Framework (ESP-IDF)
-#   # You may pin to the exact commit or the version.
-#   # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
-       uses: espressif/esp-idf-ci-action@rust-latest
-       with:
-    # Relative path under $GITHUB_WORKSPACE to place the repository
-        path: ./esp32_firmware
+#     # Relative path under $GITHUB_WORKSPACE to place the repository
+#         path: ./esp32_firmware
    
+     - name: esp-idf build
+       uses: espressif/esp-idf-ci-action@v1
+       with:
+        esp_idf_version: v4.3.2
+        target: esp32c3
+        path: ./esp32_firmware
       # Runs a single command using the runners shell
      
 # inputs:
