@@ -1,0 +1,121 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Building OTA binaries on GitHub
+
+# Controls when the workflow will run
+on:
+# Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  pull_request:
+    branches: 
+    - feature/git_action_test
+  push:
+    branches:
+      feature/git_action_test
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build_ota_binaries:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+     - name: Checkout
+       uses: actions/checkout@v2
+       with:
+         submodules: recursive
+     - name: Espressif IoT Development Framework (ESP-IDF)
+  # You may pin to the exact commit or the version.
+  # uses: espressif/esp-idf-ci-action@d69494cb0e7f6e06d27addca596aa4519b0b4e7f
+       uses: espressif/esp-idf-ci-action@rust-latest
+       with:
+    # Relative path under $GITHUB_WORKSPACE to place the repository
+        path: ./esp32_firmware
+    #  - name: Change to project
+    #    run: |
+    #      echo $PWD
+    #      cd /home/runner/work/esp32_ci/esp32_ci/esp32_firmware
+         
+      # Runs a single command using the runners shell
+     
+# inputs:
+#     path:
+#       description: 'Relative path under $GITHUB_WORKSPACE to place the repository'
+#       default: ''
+#       required: false
+#     esp_idf_version:
+#       description: 'Version of ESP-IDF docker image to use'
+#       default: 'latest'
+#       required: false
+#     target:
+#       description: 'ESP32 variant to build for'
+#       default: 'esp32c3'
+#       required: false
+# 　　 required: false
+#      - name: run the docker
+#        using: 'docker'
+#        image: 'Dockerfile'
+#        args:
+#          - ${{ inputs.path }} idf.py build
+    # - name: Include esp-idf binaries
+    #    uses: docker
+    #    with:         
+    #       args: idf.py build    
+    #Add the files to the folder
+     - name: Copy the files in temporary folder
+       run: |
+        mkdir ota_binaries
+        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries
+        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries        
+        cp esp32_firmware/build/blink.bin ota_binaries
+        cp esp32_firmware/build/blink.elf ota_binaries
+     - name: Edit the file names
+       run: |
+        cd ota_binaries
+        mv partition-table.bin obnizos__blewifi__gw2__4.0.0-beta.2__partition.bin
+        mv bootloader.bin obnizos__blewifi__gw2__4.0.0-beta.2__bootloader.bin
+        mv blink.bin obnizos__blewifi__gw2__4.0.0-beta.2.bin
+        mv blink.elf obnizos__blewifi__gw2__4.0.0-beta.2.elf
+      # Upload the binaries
+     - name: Upload artifacts
+       uses: actions/upload-artifact@v3.0.0
+       with:
+          name: ota_binaries_version_number
+          path:            
+            ota_binaries
+          if-no-files-found: error
+          retention-days: 1
+          # Delete dummy directory
+     - name: Delete the dummy directory
+       run:
+        rm -r ota_binaries
+      # Upload the binaries
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v3.0.0
+#        with:
+#           name: ota_binaries
+#           path:            
+#             esp32_firmware/build/bootloader/bootloader.bin
+#           if-no-files-found: error
+#           retention-days: 1
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v3.0.0
+#        with:
+#           name: ota_binaries
+#           path:
+#             esp32_firmware/build/partition_table/partition-table.bin
+#           if-no-files-found: error
+#           retention-days: 1
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v3.0.0
+#        with:
+#           name: ota_binaries
+#           path: |
+#             esp32_firmware/build/blink.bin
+#             esp32_firmware/build/blink.elf
+#           if-no-files-found: error
+#           retention-days: 1
+       
