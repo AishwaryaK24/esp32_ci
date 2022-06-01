@@ -31,7 +31,7 @@ jobs:
        uses: docker://espressif/idf:v4.3.2
        with:
          path: ./esp32_firmware
-         args: idf.py build    
+         #args: idf.py build    
         
          
 #      - name: Espressif IoT Development Framework (ESP-IDF)
