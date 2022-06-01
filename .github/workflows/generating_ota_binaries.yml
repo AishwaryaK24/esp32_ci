@@ -30,7 +30,7 @@ jobs:
      - name: Build binary assets
        uses: docker://espressif/idf:v4.3.2     
        with:
-        args: $PWD/esp32_firmware:/project idf.py build
+        args: $PWD/esp32_firmware idf.py build
         
          
 #      - name: Espressif IoT Development Framework (ESP-IDF)
