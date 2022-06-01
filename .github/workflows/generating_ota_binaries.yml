@@ -26,15 +26,7 @@ jobs:
      - name: Checkout
        uses: actions/checkout@v2
        with:
-         submodules: true       
- 
-     - name: Copy the files in temporary folder
-       run: |        
-        echo $PWD
-        value=`cat $PWD/esp32_firmware/main/version.h`
-        echo "$value"
-        version="$( cut -d '"' -f 2 <<< "$value" )"
-        echo "$version"
+         submodules: true         
         
 #      - name: esp-idf build
 #        uses: espressif/esp-idf-ci-action@v1
@@ -46,21 +38,23 @@ jobs:
     #Add the files to the folder
      - name: Copy the files in temporary folder
        run: |
-        mkdir ota_binaries
-        echo $PWD
-        value=`cat esp32_firmware/main/version.h`
-        echo "$value"
+        mkdir ota_binaries       
         cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries
         cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries        
         cp esp32_firmware/build/blink.bin ota_binaries
         cp esp32_firmware/build/blink.elf ota_binaries
      - name: Edit the file names
        run: |
-        cd ota_binaries
-        mv partition-table.bin obnizos__blewifi__gw2__4.0.0-beta.2__partition.bin
-        mv bootloader.bin obnizos__blewifi__gw2__4.0.0-beta.2__bootloader.bin
-        mv blink.bin obnizos__blewifi__gw2__4.0.0-beta.2.bin
-        mv blink.elf obnizos__blewifi__gw2__4.0.0-beta.2.elf
+        echo $PWD
+        value=`cat $PWD/esp32_firmware/main/version.h`
+        echo "$value"
+        version="$( cut -d '"' -f 2 <<< "$value" )"
+        echo "$version"
+        cd ota_binaries_${version}        
+        mv partition-table.bin obnizos__blewifi_gw2__${version}__partition.bin
+        mv bootloader.bin obnizos__blewifi__gw2__${version}__bootloader.bin
+        mv blink.bin obnizos__blewifi__gw2__${version}.bin
+        mv blink.elf obnizos__blewifi__gw2__${version}.elf
       # Upload the binaries
      - name: Upload artifacts
        uses: actions/upload-artifact@v3.0.0
