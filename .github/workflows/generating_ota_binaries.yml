@@ -42,25 +42,27 @@ jobs:
         echo "$value"
         version="$( cut -d '"' -f 2 <<< "$value" )"
         echo "$version"
+        env:
+         version: ${version}
+        echo "${{env.version}}"
          
  
     #Add the files to the folder
      - name: Copy the files in temporary folder
        run: |
-        mkdir ota_binaries_${version}       
-        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${version}
-        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${version}        
-        cp esp32_firmware/build/blink.bin ota_binaries_${version}
-        cp esp32_firmware/build/blink.elf ota_binaries_${version}
+        mkdir ota_binaries_${{env.version}}       
+        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${{env.version}}
+        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${{env.version}}        
+        cp esp32_firmware/build/blink.bin ota_binaries_${{env.version}}
+        cp esp32_firmware/build/blink.elf ota_binaries_${{env.version}}
      - name: Edit the file names
        run: |        
-        cd ota_binaries_${version}                
-        mv bootloader.bin obnizos__blewifi__gw2__${version}__bootloader.bin
-        mv partition-table.bin obnizos__blewifi_gw2__${version}__partition.bin
-        mv blink.bin obnizos__blewifi__gw2__${version}.bin
-        mv blink.elf obnizos__blewifi__gw2__${version}.elf
-       env:
-         version: ${version}
+        cd ota_binaries_${{env.version}}                
+        mv bootloader.bin obnizos__blewifi__gw2__${{env.version}}__bootloader.bin
+        mv partition-table.bin obnizos__blewifi_gw2__${{env.version}}__partition.bin
+        mv blink.bin obnizos__blewifi__gw2__${{env.version}}.bin
+        mv blink.elf obnizos__blewifi__gw2__${{env.version}}.elf
+       
      - name: Check current path
        run: |
         echo "$PWD"
