@@ -54,9 +54,9 @@ jobs:
         cp esp32_firmware/build/blink.elf ota_binaries
      - name: Edit the file names
        run: |        
-        cd ota_binaries_${version}        
-        mv partition-table.bin obnizos__blewifi_gw2__${version}__partition.bin
+        cd ota_binaries_${version}                
         mv bootloader.bin obnizos__blewifi__gw2__${version}__bootloader.bin
+        mv partition-table.bin obnizos__blewifi_gw2__${version}__partition.bin
         mv blink.bin obnizos__blewifi__gw2__${version}.bin
         mv blink.elf obnizos__blewifi__gw2__${version}.elf
       # Upload the binaries
