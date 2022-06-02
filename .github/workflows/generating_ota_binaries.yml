@@ -63,10 +63,10 @@ jobs:
      
  
     #Add the files to the folder
-#     - name: Copy the files in temporary folder       
-#       run: |
-#         echo "File name is obnizos__blewifi__gw2__${envi_version}__bootloader.bin"
-#         echo "$envi_version"
+    - name: Copy the files in temporary folder       
+      run: |
+        echo "File name is obnizos__blewifi__gw2__${envi_version}__bootloader.bin"
+        echo "$envi_version"
 #         mkdir ota_binaries_${envi_version}      
 #         cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${envi_version}
 #         cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${envi_version}      
