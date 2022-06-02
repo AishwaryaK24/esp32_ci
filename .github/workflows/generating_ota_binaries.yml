@@ -45,51 +45,46 @@ jobs:
         number="$value"
         dummy="$( cut -d '"' -f 2 <<< "$number" )"        
         echo $dummy
-        echo "envi_device=${dummy}" >> $GITHUB_ENV
-      
-      #   for var in $(env | grep envi_version | cut -d '=' -f1); do
-    #     echo "$var=" >> $GITHUB_ENV
-     #   done  
-          
+        echo "envi_device=${dummy}" >> $GITHUB_ENV 
         
-#     - name: esp-idf build
-#       uses: espressif/esp-idf-ci-action@v1
-#       with:
-#        esp_idf_version: v4.3.2
-#        target: esp32c3
-#        path: ./esp32_firmware    
+    - name: esp-idf build
+      uses: espressif/esp-idf-ci-action@v1
+      with:
+       esp_idf_version: v4.3.2
+       target: esp32c3
+       path: ./esp32_firmware    
      
  
     #Add the files to the folder
     - name: Copy the files in temporary folder       
       run: |
-        echo "File name is obnizos__blewifi__gw2__${envi_version}__bootloader.bin"
+        echo "File name is obnizos__${envi_device}__${envi_version}__bootloader.bin"
         echo "$envi_device"
-#         mkdir ota_binaries_${envi_version}      
-#         cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${envi_version}
-#         cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${envi_version}      
-#         cp esp32_firmware/build/blink.bin ota_binaries_${envi_version} 
-#         cp esp32_firmware/build/blink.elf ota_binaries_${envi_version}
+        mkdir ota_binaries_${envi_device}_${envi_version}     
+        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${envi_device}_${envi_version}
+        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${envi_device}_${envi_version}      
+        cp esp32_firmware/build/blink.bin ota_binaries_${envi_device}_${envi_version} 
+        cp esp32_firmware/build/blink.elf ota_binaries_${envi_device}_${envi_version}
         
-#     - name: Edit the file names
-#       run: |        
-#         echo "File name is obnizos__blewifi__gw2__${envi_version}__bootloader.bin"
-#         cd ota_binaries_$envi_version                
-#         mv bootloader.bin obnizos__blewifi__gw2__${envi_version}__bootloader.bin
-#         mv partition-table.bin obnizos__blewifi_gw2__${envi_version}__partition.bin
-#         mv blink.bin obnizos__blewifi__gw2__${envi_version}.bin
-#         mv blink.elf obnizos__blewifi__gw2__${envi_version}.elf
+    - name: Edit the file names
+      run: |        
+        echo "File name is obnizos__${envi_device}__${envi_version}__bootloader.bin"
+        cd ota_binaries_${envi_device}_${envi_version}                
+        mv bootloader.bin obnizos__${envi_device}__${envi_version}__bootloader.bin
+        mv partition-table.bin obnizos__${envi_device}__${envi_version}__partition.bin
+        mv blink.bin obnizos__${envi_device}__${envi_version}.bin
+        mv blink.elf obnizos__${envi_device}__${envi_version}.elf
     
-#     - name: Upload artifacts
-#       uses: actions/upload-artifact@v3.0.0
-#       with:
-#           name: ota_binaries_${{ env.envi_version }}
-#           path: ota_binaries_${{ env.envi_version }}
-#           if-no-files-found: error
-#           retention-days: 1
-#           # Delete dummy directory
-#     - name: Delete the dummy directory
-#       run:
-#         rm -r ota_binaries_${envi_version}
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3.0.0
+      with:
+          name: ota_binaries_${{ env.envi_device }}_${{ env.envi_version }}
+          path: ota_binaries_${{ env.envi_device }}_${{ env.envi_version }}
+          if-no-files-found: error
+          retention-days: 1
+          # Delete dummy directory
+    - name: Delete the dummy directory
+      run:
+        rm -r ota_binaries_${{ env.envi_device }}_${{ env.envi_version }}
      
        
