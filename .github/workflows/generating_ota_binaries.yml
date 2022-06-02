@@ -34,13 +34,13 @@ jobs:
          
     - name: Setting OS version
       run: |
-        value=$(sed -n '1p' $PWD/Desktop/esp32_ci/esp32_ci/esp32_firmware/main/version.h)
+        value=$(sed -n '1p' $PWD/esp32_firmware/main/version.h)
         dummy="$( cut -d '"' -f 2 <<< "$value" )"
         version='$dummy<<EOF'
         echo "$version"            
         echo "envi_version=${version}" >> $GITHUB_ENV
         echo "$envi_version"
-        value=$(sed -n '2p' $PWD/Desktop/esp32_ci/esp32_ci/esp32_firmware/main/version.h)
+        value=$(sed -n '2p' $PWD/esp32_firmware/main/version.h)
         dummy="$( cut -d '"' -f 2 <<< "$value" )"
         device='$dummy<<EOF'
         echo "$device"            
