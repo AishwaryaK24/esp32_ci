@@ -40,13 +40,14 @@ jobs:
         dummy="$( cut -d '"' -f 2 <<< "$number" )"
         echo $dummy                 
         echo "envi_version=${dummy}" >> $GITHUB_ENV
-        echo "$envi_version"
+        echo "${envi_version}"
         value=$(sed -n '2p' $PWD/esp32_firmware/main/version.h)
         echo $value
         number="$value"
         dummy="$( cut -d '"' -f 2 <<< "$number" )"        
+        echo $dummy
         echo "envi_device=${dummy}" >> $GITHUB_ENV
-        echo "$envi_device"
+        echo "${envi_device}"
        
       #   for var in $(env | grep envi_version | cut -d '=' -f1); do
     #     echo "$var=" >> $GITHUB_ENV
