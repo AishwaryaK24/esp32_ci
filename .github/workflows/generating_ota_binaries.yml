@@ -34,17 +34,16 @@ jobs:
          
     - name: Setting OS version
       run: |
-        echo $PWD
         value=`cat $PWD/esp32_firmware/main/version.h`
-        echo "$value"
-        version="$( cut -d '"' -f 2 <<< "$value" )"     
-        env
-        for var in $(env | grep envi_version | cut -d '=' -f1); do
-         echo "$var=" >> $GITHUB_ENV
-        done
-        echo "$version"     
+        version="$( cut -d '"' -f 2 <<< "$value" )"   
+        envi_version="${{ github.event.inputs.envi_version }}"
         echo "envi_version=${version}" >> $GITHUB_ENV
-        echo "$envi_version"       
+        echo "$envi_version"     
+        env
+   #     for var in $(env | grep envi_version | cut -d '=' -f1); do
+    #     echo "$var=" >> $GITHUB_ENV
+     #   done  
+          
         
    #     echo 'envi_version<<EOF' >> $GITHUB_ENV
    #     $version >> $GITHUB_ENV
