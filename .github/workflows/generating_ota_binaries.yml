@@ -37,7 +37,8 @@ jobs:
         echo $PWD
         value=`cat $PWD/esp32_firmware/main/version.h`
         echo "$value"
-        version="$( cut -d '"' -f 2 <<< "$value" )"      
+        version="$( cut -d '"' -f 2 <<< "$value" )"     
+        env
         for var in $(env | grep envi_version | cut -d '=' -f1); do
          echo "$var=" >> $GITHUB_ENV
         done
