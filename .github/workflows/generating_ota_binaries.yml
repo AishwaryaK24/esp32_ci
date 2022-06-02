@@ -53,14 +53,15 @@ jobs:
     - name: Copy the files in temporary folder       
       run: |
         echo "$envi_version"
-        mkdir ota_binaries_$envi_version       
-        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_$envi_version
-        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_$envi_version       
-        cp esp32_firmware/build/blink.bin ota_binaries_$envi_version
-        cp esp32_firmware/build/blink.elf ota_binaries_$envi_version
+        mkdir ota_binaries_${envi_version}      
+        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${envi_version}
+        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${envi_version}      
+        cp esp32_firmware/build/blink.bin ota_binaries_${envi_version}
+        cp esp32_firmware/build/blink.elf ota_binaries_${envi_version}
         
     - name: Edit the file names
       run: |        
+        echo "File name is obnizos__blewifi__gw2__$envi_version__bootloader.bin"
         cd ota_binaries_$envi_version                
         mv bootloader.bin obnizos__blewifi__gw2__$envi_version__bootloader.bin
         mv partition-table.bin obnizos__blewifi_gw2__$envi_version__partition.bin
