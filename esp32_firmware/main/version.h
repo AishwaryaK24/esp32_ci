@@ -1,3 +1,3 @@
-#define FIRMWARE_VERSION "4.0.0-8"
+#define FIRMWARE_VERSION "4.0.0-beta.8"
 
  
