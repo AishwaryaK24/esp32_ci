@@ -35,7 +35,8 @@ jobs:
     - name: Setting OS version
       run: |
         value=`cat $PWD/esp32_firmware/main/version.h`
-        version="$( cut -d '"' -f 2 <<< "$value" )"
+        dummy="$( cut -d '"' -f 2 <<< "$value" )"
+        version='$dummy<<EOF'
         echo "$version"            
         echo "envi_version=${version}" >> $GITHUB_ENV
         echo "$envi_version"
