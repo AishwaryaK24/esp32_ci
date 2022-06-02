@@ -39,8 +39,9 @@ jobs:
         echo "$value"
         version="$( cut -d '"' -f 2 <<< "$value" )"
         echo "$version"            
-        echo "envi_version=${version}" >> $GITHUB_ENV
-        echo "$envi_version"
+        echo 'envi_version<<EOF' >> $GITHUB_ENV
+        $version >> $GITHUB_ENV
+        echo 'EOF' >> $GITHUB_ENV
         
     - name: esp-idf build
       uses: espressif/esp-idf-ci-action@v1
