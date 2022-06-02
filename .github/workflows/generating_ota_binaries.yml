@@ -14,88 +14,72 @@ on:
     branches:
       [feature/git_action_test]
 
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build_ota_binaries:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+   
+ 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-     - name: Checkout
-       uses: actions/checkout@v2
-       with:
-         submodules: true       
- 
-     - name: Copy the files in temporary folder
-       run: |        
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+         submodules: true        
+         
+    - name: Setting OS version
+      run: |
         echo $PWD
         value=`cat $PWD/esp32_firmware/main/version.h`
         echo "$value"
+        version="$( cut -d '"' -f 2 <<< "$value" )"
+        echo "$version"            
+        echo "envi_version=${version}" >> $GITHUB_ENV
+        echo "$envi_version"
         
-#      - name: esp-idf build
-#        uses: espressif/esp-idf-ci-action@v1
-#        with:
-#         esp_idf_version: v4.3.2
-#         target: esp32c3
-#         path: ./esp32_firmware
+    - name: esp-idf build
+      uses: espressif/esp-idf-ci-action@v1
+      with:
+       esp_idf_version: v4.3.2
+       target: esp32c3
+       path: ./esp32_firmware    
+     
  
     #Add the files to the folder
-     - name: Copy the files in temporary folder
-       run: |
-        mkdir ota_binaries
-        echo $PWD
-        value=`cat esp32_firmware/main/version.h`
-        echo "$value"
-        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries
-        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries        
-        cp esp32_firmware/build/blink.bin ota_binaries
-        cp esp32_firmware/build/blink.elf ota_binaries
-     - name: Edit the file names
-       run: |
-        cd ota_binaries
-        mv partition-table.bin obnizos__blewifi__gw2__4.0.0-beta.2__partition.bin
-        mv bootloader.bin obnizos__blewifi__gw2__4.0.0-beta.2__bootloader.bin
-        mv blink.bin obnizos__blewifi__gw2__4.0.0-beta.2.bin
-        mv blink.elf obnizos__blewifi__gw2__4.0.0-beta.2.elf
-      # Upload the binaries
-     - name: Upload artifacts
-       uses: actions/upload-artifact@v3.0.0
-       with:
-          name: ota_binaries_version_number
-          path:            
-            ota_binaries
+    - name: Copy the files in temporary folder       
+      run: |
+        echo "File name is obnizos__blewifi__gw2__${envi_version}__bootloader.bin"
+        echo "$envi_version"
+        mkdir ota_binaries_${envi_version}      
+        cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${envi_version}
+        cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${envi_version}      
+        cp esp32_firmware/build/blink.bin ota_binaries_${envi_version} 
+        cp esp32_firmware/build/blink.elf ota_binaries_${envi_version}
+        
+    - name: Edit the file names
+      run: |        
+        echo "File name is obnizos__blewifi__gw2__${envi_version}__bootloader.bin"
+        cd ota_binaries_$envi_version                
+        mv bootloader.bin obnizos__blewifi__gw2__${envi_version}__bootloader.bin
+        mv partition-table.bin obnizos__blewifi_gw2__${envi_version}__partition.bin
+        mv blink.bin obnizos__blewifi__gw2__${envi_version}.bin
+        mv blink.elf obnizos__blewifi__gw2__${envi_version}.elf
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3.0.0
+      with:
+          name: ota_binaries_${{ env.envi_version }}
+          path: ota_binaries_${{ env.envi_version }}
           if-no-files-found: error
           retention-days: 1
           # Delete dummy directory
-     - name: Delete the dummy directory
-       run:
-        rm -r ota_binaries
-      # Upload the binaries
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v3.0.0
-#        with:
-#           name: ota_binaries
-#           path:            
-#             esp32_firmware/build/bootloader/bootloader.bin
-#           if-no-files-found: error
-#           retention-days: 1
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v3.0.0
-#        with:
-#           name: ota_binaries
-#           path:
-#             esp32_firmware/build/partition_table/partition-table.bin
-#           if-no-files-found: error
-#           retention-days: 1
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v3.0.0
-#        with:
-#           name: ota_binaries
-#           path: |
-#             esp32_firmware/build/blink.bin
-#             esp32_firmware/build/blink.elf
-#           if-no-files-found: error
-#           retention-days: 1
+    - name: Delete the dummy directory
+      run:
+        rm -r ota_binaries_${envi_version}
+     
        
