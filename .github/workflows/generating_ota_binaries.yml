@@ -73,8 +73,8 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@v3.0.0
       with:
-          name: ota_binaries_${{ envi_version }}
-          path: ota_binaries_${{ envi_version }}
+          name: ota_binaries_${{ env.envi_version }}
+          path: ota_binaries_${{ env.envi_version }}
           if-no-files-found: error
           retention-days: 1
           # Delete dummy directory
