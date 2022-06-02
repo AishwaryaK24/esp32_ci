@@ -39,16 +39,14 @@ jobs:
         number="$value"
         dummy="$( cut -d '"' -f 2 <<< "$number" )"
         echo $dummy                 
-        echo "envi_version=${dummy}" >> $GITHUB_ENV
-        echo "${envi_version}"
+        echo "envi_version=${dummy}" >> $GITHUB_ENV        
         value=$(sed -n '2p' $PWD/esp32_firmware/main/version.h)
         echo $value
         number="$value"
         dummy="$( cut -d '"' -f 2 <<< "$number" )"        
         echo $dummy
         echo "envi_device=${dummy}" >> $GITHUB_ENV
-        echo "${envi_device}"
-       
+      
       #   for var in $(env | grep envi_version | cut -d '=' -f1); do
     #     echo "$var=" >> $GITHUB_ENV
      #   done  
@@ -66,7 +64,7 @@ jobs:
     - name: Copy the files in temporary folder       
       run: |
         echo "File name is obnizos__blewifi__gw2__${envi_version}__bootloader.bin"
-        echo "$envi_version"
+        echo "$envi_device"
 #         mkdir ota_binaries_${envi_version}      
 #         cp esp32_firmware/build/bootloader/bootloader.bin ota_binaries_${envi_version}
 #         cp esp32_firmware/build/partition_table/partition-table.bin ota_binaries_${envi_version}      
