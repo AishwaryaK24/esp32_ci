@@ -65,10 +65,10 @@ jobs:
       run: |        
         echo "File name is obnizos__blewifi__gw2__${envi_version}__bootloader.bin"
         cd ota_binaries_$envi_version                
-        mv bootloader.bin obnizos__blewifi__gw2__${envi_version}__bootloader.bin
-        mv partition-table.bin obnizos__blewifi_gw2__${envi_version}__partition.bin
-        mv blink.bin obnizos__blewifi__gw2__${envi_version}.bin
-        mv blink.elf obnizos__blewifi__gw2__${envi_version}.elf
+      #  mv bootloader.bin obnizos__blewifi__gw2__${envi_version}__bootloader.bin
+       # mv partition-table.bin obnizos__blewifi_gw2__${envi_version}__partition.bin
+       # mv blink.bin obnizos__blewifi__gw2__${envi_version}.bin
+      #  mv blink.elf obnizos__blewifi__gw2__${envi_version}.elf
        
 #      - name: Check current path
 #        run: |
